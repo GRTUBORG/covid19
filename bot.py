@@ -28,3 +28,8 @@ def start_command(message):
     button1 = types.KeyboardButton(text = "Статистика по России")
     keyboard.row(button, button1)
     bot.send_message(655041562, f'У тебя +1 новый пользователь! \n{str_countes}')
+    bot.reply_to(message, "*Рад тебя видеть!* \n\nПропиши /start, или воспользуйся клавиатурой ниже! Если вдруг ты заблудился или забыл команды — /help в помощь.", parse_mode = 'Markdown', reply_markup = keyboard)
+    
+@bot.message_handler(commands = ['help'])
+def send_help(message):
+    bot.reply_to(message, "Привет! Рад, что ты заглянул(а) сюда \n• /start — узнать статистику.")
