@@ -2,12 +2,10 @@ import telebot
 import time
 import json
 import os
-import re
-import random
 import requests 
 
 from telebot import types
-from datetime import datetime, date, timedelta 
+from covid import Covid
 
 token = os.environ.get('bot_token')
 bot = telebot.TeleBot(str(token))
