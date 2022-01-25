@@ -34,8 +34,9 @@ def send_help(message):
 
 @bot.message_handler(commands = ['covid']
 def send_statics(message):
+    messagetoedit = bot.send_message(message.chat.id, "Собираю статистику...")
     world_cases = covid1.get_total_confirmed_cases() 
     recovered = covid.get_total_recovered() 
     active = covid.get_total_active_cases() 
     deaths = covid.get_total_deaths()
-    bot.send_message(  , "")
+    bot.edit_message_text(chat_id = message.chat.id, message_id = messagetoedit.message_id, text = f"{world_cases}")
