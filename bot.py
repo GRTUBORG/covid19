@@ -40,9 +40,9 @@ def send_statics(message):
     confirmed_country_cases = covid.get_status_by_country_name("russia")['confirmed'] 
     deaths_country_cases = covid.get_status_by_country_name("russia")['deaths'] 
     msg_covid = f'''
-    Новых случаев за сутки: +{country_cases},
-    Всего: {confirmed_country_cases},
-    Смертей: {deaths_country_cases}.'''
+    *Новых случаев за сутки:* +{country_cases},
+    *Всего:* {confirmed_country_cases},
+    *Смертей:* {deaths_country_cases}.'''
     msg_covid = msg_covid.replace("    ", "")
     if country_cases == 0:
         msg_covid = msg_covid.replace(f"Новых случаев за сутки: +{country_cases}", "Статистика по новым случаям *обновляется*. _Попробуйте немного позже_\n")
@@ -89,9 +89,9 @@ def text(message):
         confirmed_country_cases = covid.get_status_by_country_name("russia")['confirmed'] 
         deaths_country_cases = covid.get_status_by_country_name("russia")['deaths'] 
         msg_covid = f'''
-        Новых случаев за сутки: +{country_cases},
-        Всего: {confirmed_country_cases},
-        Смертей: {deaths_country_cases}.'''
+        *Новых случаев за сутки:* +{country_cases},
+        *Всего:* {confirmed_country_cases},
+        *Смертей:* {deaths_country_cases}.'''
         msg_covid = msg_covid.replace("    ", "")
         if country_cases == 0:
             msg_covid = msg_covid.replace(f"Новых случаев за сутки: +{country_cases}", "Статистика по новым случаям *обновляется*. _Попробуйте немного позже_\n")
