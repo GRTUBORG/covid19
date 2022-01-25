@@ -32,7 +32,7 @@ def start_command(message):
 def send_help(message):
     bot.reply_to(message, "Привет! Рад, что ты заглянул(а) сюда \n• /start — узнать статистику.")
 
-@bot.message_handler(commands = ['covid']
+@bot.message_handler(commands = ['covid'])
 def send_statics(message):
     messagetoedit = bot.send_message(message.chat.id, "Собираю статистику...")
     world_cases = covid1.get_total_confirmed_cases() 
