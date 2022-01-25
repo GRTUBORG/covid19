@@ -45,7 +45,7 @@ def send_statics(message):
     Смертей: {deaths_country_cases}.'''
     msg_covid = msg_covid.replace("    ", "")
     if country_cases == 0:
-        msg_covid = msg_covid.replace("Новых случаев за сутки: +{country_cases}", "Статистика по новым случаям *обновляется*. _Попробуйте немного позже_")
+        msg_covid = msg_covid.replace(f"Новых случаев за сутки: +{country_cases}", "Статистика по новым случаям *обновляется*. _Попробуйте немного позже_")
     bot.edit_message_text(chat_id = message.chat.id, message_id = messagetoedit.message_id, text = msg_covid, parse_mode = 'Markdown')
 
 @bot.message_handler(commands = ['covid'])
