@@ -37,7 +37,7 @@ def send_statics(message):
     messagetoedit = bot.send_message(message.chat.id, "*Собираю статистику* по России...")
     covid = Covid(source = "worldometers")
     country_cases = covid.get_status_by_country_name['new_cases']
-     = covid.get_status_by_country_name['confirmed'] 
+    confirmed_country_cases = covid.get_status_by_country_name['confirmed'] 
     deaths_country_cases = covid.get_status_by_country_name['deaths'] 
     msg_covid = f'''
     Новых случаев за сутки: +{country_cases},
