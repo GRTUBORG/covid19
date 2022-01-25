@@ -82,7 +82,20 @@ def text(message):
         *Смертей:* {deaths}.'''
         msg_covid = msg_covid.replace("    ", "")
         bot.edit_message_text(chat_id = message.chat.id, message_id = messagetoedit.message_id, text = msg_covid, parse_mode = 'Markdown')
-
+    elif message.text.lower() == 'статистика по россии':
+        messagetoedit = bot.send_message(message.chat.id, "Собираю статистику *по России*...", parse_mode = 'Markdown')
+        covid = Covid(source = "worldometers")
+        country_cases = covid.get_status_by_country_name("russia")['new_cases']
+        confirmed_country_cases = covid.get_status_by_country_name("russia")['confirmed'] 
+        deaths_country_cases = covid.get_status_by_country_name("russia")['deaths'] 
+        msg_covid = f'''
+        Новых случаев за сутки: +{country_cases},
+        Всего: {confirmed_country_cases},
+        Смертей: {deaths_country_cases}.'''
+        msg_covid = msg_covid.replace("    ", "")
+        if country_cases == 0:
+            msg_covid = msg_covid.replace(f"Новых случаев за сутки: +{country_cases}", "Статистика по новым случаям *обновляется*. _Попробуйте немного позже_\n")
+        bot.edit_message_text(chat_id = message.chat.id, message_id = messagetoedit.message_id, text = msg_covid, parse_mode = 'Markdown')
 
 if __name__ == '__main__':
     while True:
