@@ -41,11 +41,10 @@ def send_statics(message):
     recovered = covid.get_total_recovered() 
     active = covid.get_total_active_cases() 
     deaths = covid.get_total_deaths()
-    msg_covid = f"""Всего случаев: {world_cases};\n
+    msg_covid = f'''Всего случаев: {world_cases};\n
     Подтверждено: {recovered},\n
     Активных больных: {active},\n
-    Смертей: {deaths}.
-    """
+    Смертей: {deaths}.'''
     bot.edit_message_text(chat_id = message.chat.id, message_id = messagetoedit.message_id, text = msg_covid)
 
 if __name__ == '__main__':
