@@ -30,7 +30,24 @@ def start_command(message):
     
 @bot.message_handler(commands = ['help'])
 def send_help(message):
-    bot.reply_to(message, "Привет! Рад, что ты заглянул(а) сюда \n• /start — узнать статистику.")
+    bot.reply_to(message, "Привет! Рад, что ты заглянул(а) сюда \n• /covid — узнать статистику по миру; \n• /covid_rus — узнать статистику по России.")
+
+@bot.message_handler(commands = ['covid_rus'])
+def send_statics(message):
+    messagetoedit = bot.send_message(message.chat.id, "*Собираю статистику* по России...")
+    covid = Covid(source = "worldometers") 
+    covid1 = Covid()
+    world_cases = covid1.get_total_confirmed_cases() 
+    recovered = covid.get_total_recovered() 
+    active = covid.get_total_active_cases() 
+    deaths = covid.get_total_deaths()
+    msg_covid = f'''
+    Всего случаев: {world_cases};
+    Подтверждено: {recovered},
+    Активных больных: {active},
+    Смертей: {deaths}.'''
+    msg_covid = msg_covid.replace("    ", "")
+    bot.edit_message_text(chat_id = message.chat.id, message_id = messagetoedit.message_id, text = msg_covid, parse_mode = 'Markdown')
 
 @bot.message_handler(commands = ['covid'])
 def send_statics(message):
