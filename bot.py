@@ -69,19 +69,19 @@ def send_statics(message):
 def text(message):
     if message.text.lower() == 'статистика по миру':
         messagetoedit = bot.send_message(message.chat.id, "Собираю статистику...")
-    covid = Covid(source = "worldometers") 
-    covid1 = Covid()
-    world_cases = covid1.get_total_confirmed_cases() 
-    recovered = covid.get_total_recovered() 
-    active = covid.get_total_active_cases() 
-    deaths = covid.get_total_deaths()
-    msg_covid = f'''
-    *Всего случаев:* {world_cases};
-    *Подтверждено:* {recovered},
-    *Активных больных:* {active},
-    *Смертей:* {deaths}.'''
-    msg_covid = msg_covid.replace("    ", "")
-    bot.edit_message_text(chat_id = message.chat.id, message_id = messagetoedit.message_id, text = msg_covid, parse_mode = 'Markdown')
+        covid = Covid(source = "worldometers") 
+        covid1 = Covid()
+        world_cases = covid1.get_total_confirmed_cases() 
+        recovered = covid.get_total_recovered() 
+        active = covid.get_total_active_cases() 
+        deaths = covid.get_total_deaths()
+        msg_covid = f'''
+        *Всего случаев:* {world_cases};
+        *Подтверждено:* {recovered},
+        *Активных больных:* {active},
+        *Смертей:* {deaths}.'''
+        msg_covid = msg_covid.replace("    ", "")
+        bot.edit_message_text(chat_id = message.chat.id, message_id = messagetoedit.message_id, text = msg_covid, parse_mode = 'Markdown')
 
 
 if __name__ == '__main__':
