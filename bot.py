@@ -40,3 +40,11 @@ def send_statics(message):
     active = covid.get_total_active_cases() 
     deaths = covid.get_total_deaths()
     bot.edit_message_text(chat_id = message.chat.id, message_id = messagetoedit.message_id, text = f"{world_cases}")
+
+if __name__ == '__main__':
+    while True:
+        try:
+            bot.polling(none_stop = True)
+        except Exception as e:
+            time.sleep(3)
+            print(f'Возникла ошибка: {e}')
