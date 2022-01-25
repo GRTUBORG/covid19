@@ -46,6 +46,7 @@ def send_statics(message):
     Подтверждено: {recovered},
     Активных больных: {active},
     Смертей: {deaths}.'''
+    msg_covid = msg_covid.replace("    ", "")
     bot.edit_message_text(chat_id = message.chat.id, message_id = messagetoedit.message_id, text = msg_covid)
 
 if __name__ == '__main__':
