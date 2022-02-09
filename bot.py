@@ -6,6 +6,7 @@ import requests
 
 from telebot import types
 from covid import Covid
+from datetime import datetime, date, timedelta
 
 token = os.environ.get('bot_token')
 bot = telebot.TeleBot(str(token))
@@ -43,6 +44,7 @@ def send_statics(message):
     confirmed_country_cases = covid.get_status_by_country_name("russia")['confirmed'] 
     deaths_country_cases = covid.get_status_by_country_name("russia")['deaths'] 
     msg_covid = f'''
+    • По состоянию на `{nowtime}`:
     *Новых случаев за сутки:* +{country_cases},
     *Всего:* {confirmed_country_cases},
     *Смертей:* {deaths_country_cases}.'''
@@ -64,6 +66,7 @@ def send_statics(message):
     active = covid.get_total_active_cases() 
     deaths = covid.get_total_deaths()
     msg_covid = f'''
+    • По состоянию на `{nowtime}`:
     *Всего случаев:* {world_cases};
     *Подтверждено:* {recovered},
     *Активных больных:* {active},
@@ -85,6 +88,7 @@ def text(message):
         active = covid.get_total_active_cases() 
         deaths = covid.get_total_deaths()
         msg_covid = f'''
+        • По состоянию на `{nowtime}`:
         *Всего случаев:* {world_cases};
         *Подтверждено:* {recovered},
         *Активных больных:* {active},
@@ -98,6 +102,7 @@ def text(message):
         confirmed_country_cases = covid.get_status_by_country_name("russia")['confirmed'] 
         deaths_country_cases = covid.get_status_by_country_name("russia")['deaths'] 
         msg_covid = f'''
+        • По состоянию на `{nowtime}`:
         *Новых случаев за сутки:* +{country_cases},
         *Всего:* {confirmed_country_cases},
         *Смертей:* {deaths_country_cases}.'''
