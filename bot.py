@@ -34,6 +34,9 @@ def send_help(message):
 
 @bot.message_handler(commands = ['covid_rus'])
 def send_statics(message):
+    delta = timedelta(hours = 3) 
+    now = datetime.now() + delta
+    nowtime = now.strftime("(%d.%m.%y)")
     messagetoedit = bot.send_message(message.chat.id, "Собираю статистику *по России*...", parse_mode = 'Markdown')
     covid = Covid(source = "worldometers")
     country_cases = covid.get_status_by_country_name("russia")['new_cases']
@@ -50,6 +53,9 @@ def send_statics(message):
 
 @bot.message_handler(commands = ['covid'])
 def send_statics(message):
+    delta = timedelta(hours = 3) 
+    now = datetime.now() + delta
+    nowtime = now.strftime("(%d.%m.%y)")
     messagetoedit = bot.send_message(message.chat.id, "Собираю статистику...")
     covid = Covid(source = "worldometers") 
     covid1 = Covid()
@@ -67,6 +73,9 @@ def send_statics(message):
 
 @bot.message_handler(content_types = ['text'])
 def text(message):
+    delta = timedelta(hours = 3) 
+    now = datetime.now() + delta
+    nowtime = now.strftime("(%d.%m.%y)")
     if message.text.lower() == 'статистика по миру':
         messagetoedit = bot.send_message(message.chat.id, "Собираю статистику...")
         covid = Covid(source = "worldometers") 
