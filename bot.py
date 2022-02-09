@@ -37,14 +37,14 @@ def send_help(message):
 def send_statics(message):
     delta = timedelta(hours = 3) 
     now = datetime.now() + delta
-    nowtime = now.strftime("(%d.%m.%y)")
+    nowtime = now.strftime("%d.%m.%y")
     messagetoedit = bot.send_message(message.chat.id, "Собираю статистику *по России*...", parse_mode = 'Markdown')
     covid = Covid(source = "worldometers")
     country_cases = covid.get_status_by_country_name("russia")['new_cases']
     confirmed_country_cases = covid.get_status_by_country_name("russia")['confirmed'] 
     deaths_country_cases = covid.get_status_by_country_name("russia")['deaths'] 
     msg_covid = f'''
-    • По состоянию на `{nowtime}`:
+    • По состоянию на `{nowtime}`:\n
     *Новых случаев за сутки:* +{country_cases},
     *Всего:* {confirmed_country_cases},
     *Смертей:* {deaths_country_cases}.'''
@@ -57,7 +57,7 @@ def send_statics(message):
 def send_statics(message):
     delta = timedelta(hours = 3) 
     now = datetime.now() + delta
-    nowtime = now.strftime("(%d.%m.%y)")
+    nowtime = now.strftime("%d.%m.%y")
     messagetoedit = bot.send_message(message.chat.id, "Собираю статистику...")
     covid = Covid(source = "worldometers") 
     covid1 = Covid()
@@ -66,7 +66,7 @@ def send_statics(message):
     active = covid.get_total_active_cases() 
     deaths = covid.get_total_deaths()
     msg_covid = f'''
-    • По состоянию на `{nowtime}`:
+    • По состоянию на `{nowtime}`:\n
     *Всего случаев:* {world_cases};
     *Подтверждено:* {recovered},
     *Активных больных:* {active},
@@ -78,7 +78,7 @@ def send_statics(message):
 def text(message):
     delta = timedelta(hours = 3) 
     now = datetime.now() + delta
-    nowtime = now.strftime("(%d.%m.%y)")
+    nowtime = now.strftime("%d.%m.%y")
     if message.text.lower() == 'статистика по миру':
         messagetoedit = bot.send_message(message.chat.id, "Собираю статистику...")
         covid = Covid(source = "worldometers") 
@@ -88,7 +88,7 @@ def text(message):
         active = covid.get_total_active_cases() 
         deaths = covid.get_total_deaths()
         msg_covid = f'''
-        • По состоянию на `{nowtime}`:
+        • По состоянию на `{nowtime}`:\n
         *Всего случаев:* {world_cases};
         *Подтверждено:* {recovered},
         *Активных больных:* {active},
@@ -102,7 +102,7 @@ def text(message):
         confirmed_country_cases = covid.get_status_by_country_name("russia")['confirmed'] 
         deaths_country_cases = covid.get_status_by_country_name("russia")['deaths'] 
         msg_covid = f'''
-        • По состоянию на `{nowtime}`:
+        • По состоянию на `{nowtime}`:\n
         *Новых случаев за сутки:* +{country_cases},
         *Всего:* {confirmed_country_cases},
         *Смертей:* {deaths_country_cases}.'''
