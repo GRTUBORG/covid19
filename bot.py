@@ -18,7 +18,7 @@ def start_command(message):
     countes = [f'{message.from_user.id} — ID,\n',
                f'{message.from_user.first_name} — имя,\n',
                f'{message.from_user.last_name} — фамилия,\n',
-               f'{message.from_user.username} — username.'
+               f'@{message.from_user.username} — username.'
               ]
     for x in countes:
         str_countes += x
